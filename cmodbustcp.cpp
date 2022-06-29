@@ -422,8 +422,7 @@ QByteArray CModbusTcp::reponseEcriture(bool exec)
 
 QByteArray CModbusTcp::reponseLecture(QByteArray val)
 {
-    _reponse ="";
-    _reponse += ":";
+    _reponse = ":";
     QByteArray data = "00010000";
 
     uint16_t lenght = 2+4+4+4+1+2+2+val.size()+4;//8+4+1+2+2+4+4+2
@@ -445,6 +444,9 @@ QByteArray CModbusTcp::reponseLecture(QByteArray val)
         break;
     case 4://si authentification
         data += "A";
+        break;
+    case 5:// si demande etat places de parking
+        data+="L";
         break;
     }
     data += "03";
