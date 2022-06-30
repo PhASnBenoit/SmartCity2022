@@ -230,9 +230,11 @@ QByteArray CZdc::getRfidE()
 {
     QByteArray rfid;
     lock();
-    for(int i = 0; i < 5; i++)
-        rfid[i] = _adrZdc->parking.rfidE[i];
+    for(int i = 0; i < 5; i++) {
+        rfid += QByteArray::number(_adrZdc->parking.rfidE[i], 16).rightJustified(2, '0');
+    } // for
     unlock();
+
     return rfid;
 }
 
@@ -240,8 +242,9 @@ QByteArray CZdc::getRfidS()
 {
     QByteArray rfid;
     lock();
-    for(int i = 0; i < 5; i++)
-        rfid[i] = _adrZdc->parking.rfidS[i];
+    for(int i = 0; i < 5; i++) {
+        rfid += QByteArray::number(_adrZdc->parking.rfidS[i], 16).rightJustified(2, '0');
+    } // for
     unlock();
     return rfid;
 }
@@ -250,7 +253,7 @@ void CZdc::setLigneSup(QString &liSup)
 {
     int nb = liSup.size();
     lock();
-    bzero(_adrZdc->parking.affLigneSup, sizeof(_adrZdc->parking.affLigneSup));
+    memset( _adrZdc->parking.affLigneSup, 0, sizeof(_adrZdc->parking.affLigneSup));
     memcpy(_adrZdc->parking.affLigneSup, liSup.left(16).toStdString().c_str(),(nb>16?16:nb));
     unlock();
 }
@@ -259,7 +262,7 @@ void CZdc::setLigneInf(QString &liInf)
 {
     int nb = liInf.size();
     lock();
-    bzero(_adrZdc->parking.affLigneInf, sizeof(_adrZdc->parking.affLigneInf));
+    memset(_adrZdc->parking.affLigneInf, 0, sizeof(_adrZdc->parking.affLigneInf));
     memcpy(_adrZdc->parking.affLigneInf, liInf.left(16).toStdString().c_str(),(nb>16?16:nb));
     unlock();
 }

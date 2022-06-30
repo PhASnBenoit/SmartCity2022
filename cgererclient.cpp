@@ -145,9 +145,9 @@ QByteArray CGererClient::read(int ordre)
         rfidE = _zdc->getRfidE();
         rfidS = _zdc->getRfidS();
         data += "00";
-        data+= rfidE.toUpper();
+        data += rfidE.toUpper();
         data += "00";
-        data+= rfidS.toUpper();
+        data += rfidS.toUpper();
         break;
 
     case 6://éclairage

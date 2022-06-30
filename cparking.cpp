@@ -30,7 +30,7 @@ void CParking::on_parking()
     _i2c->lire(addr, parking, 11); // Lecture
     T_PARK_STATE *parkState;
     parkState = reinterpret_cast<T_PARK_STATE *>(&parking[0]);
-    qDebug() << parkState;
+    qDebug() << "Etats parking : " << QString::number(parking[0], 16);
 
     //_bdd->mod_i2cParking(QString(addr), QString(parkState->bitsStates));
     _zdc->setEtatsBarrieres(parkState->bitsStates);

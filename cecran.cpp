@@ -253,14 +253,18 @@ void CEcran::on_ecran(QString nb)
     //_bdd->set_i2cAfficheur("62"," ");
     clear();
     setColor(WHITE);//Default color
-    switch(nb.toInt(nullptr, 10)){
-    case 3 ... 8:
-        setColor(WHITE);
-        break;
-    case 0 ... 2:
-        setRGB(155,0,255);
-        break;
-    }//SW color
+    setRGB(155,0,255);
+//    switch(nb.toInt(nullptr, 10)){
+//    case 3 ... 8:
+//        setColor(WHITE);
+//        break;
+//    case 0 ... 2:
+//        setRGB(155,0,255);
+//        break;
+//    default:
+//        setColor(WHITE);
+//        break;
+//    }//SW color
     setCursor(0, 0);
     QString sup = _zdc->getLigneSup();//Lecture de la première ligne dans la ZDC
     ecrire(sup);

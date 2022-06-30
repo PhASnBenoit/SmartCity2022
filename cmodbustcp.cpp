@@ -184,7 +184,7 @@ int CModbusTcp::decodeParking()
             }//if
             return 1;//Ecriture ecran
 
-        case 0xc0: // 160
+        case 0xA0: // 160
             if (_nbrOfWord != "0001"){
                 emit sig_erreur("erreur nombre de mots");
                 return false;
@@ -201,10 +201,10 @@ int CModbusTcp::decodeParking()
         }
 
     case 03:
-        [[clang::fallthrough]];
+        //[[clang::fallthrough]];
     case 04:
         switch(Uint_Addr1Word){
-        case 0xc1: // 161
+        case 0xA1: // 161
 
             if (_nbrOfWord != "0001"){
                 emit sig_erreur("erreur nombre de mots");
@@ -216,7 +216,7 @@ int CModbusTcp::decodeParking()
             }
             return 3;//Lecture parking
 
-        case 0xc2: // 162
+        case 0xA2: // 162
             if (_nbrOfWord != "0006"){
                 emit sig_erreur("erreur nombre de mots");
                 return false;
